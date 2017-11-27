@@ -1,0 +1,49 @@
+extends ./layout2.jade
+block contenido
+		.containers(style="text-align: center;" )
+					h2 Tus Oficinas
+				for imagen in imagenes
+					if filtro == imagen.creator._id
+									div(class="ubicacion2")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											form(action="/app/imagenes/#{imagen._id}?_method=DELETE", method="POST")
+												input(type="submit", value="Elimnar")
+												a(href="/app/imagenes/#{imagen._id}/edit") Editars
+												a(href="/detalle/#{imagen._id}" class="ordenado")
+													p ver oficina
+		script(type='text/javascript', src='/public/js/jquery.min.v1.js')
+			script(type='text/javascript', src='/public/js/bootstrap.min.js')
+			script(src='/public/slick/slick.min.js', type='text/javascript', charset='utf-8')
+			script(type='text/javascript').
+				$(document).on('ready', function() {
+				$('.one-time').slick({
+				dots: true,
+				infinite: true,
+				speed: 900,
+				slidesToShow: 1,
+				adaptiveHeight: true,
+				fade:true,
+				autoplay: true,
+				autoplaySpeed: 9900,
+				});
+				$('.slider-for').slick({
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows: false,
+				fade: true,
+				asNavFor: '.slider-nav',
+				centerMode: true, focusOnSelect: true,autoplay: true, autoplaySpeed: 45000, });
+				$('.slider-nav').slick({
+				slidesToShow: 4,slidesToScroll: 1,
+				asNavFor: '.slider-for',centerMode: false,
+				focusOnSelect: true
+				});
+				$('.single-item').slick();
+				});
+
+			script(type='text/javascript').
+				twttr.widgets.createTimeline({
+				sourceType: "profile",
+				screenName: "fabric"
+				}, document.getElementById("container"))		
+script(async='', src='//platform.twitter.com/widgets.js', charset='utf-8')

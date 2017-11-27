@@ -1,0 +1,172 @@
+extends ./imagenes/layoutofi.jade
+block contenido 
+			.coreccion
+				#Pizza
+				.risponsive2
+						for imagen in imagenes
+							if imagen.id == filtro
+								p
+									img(src="/public/imagenes/img/icon/pin.png" style="width: 50px; height: 50px; margin:10px; padding: 5px;")
+									="Ciudad/"+imagen.Localidad+"/"+imagen.dir 
+								section.one-time(id="cosas") 
+										if imagen.extension != "noesta"
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}" alt="#{imagen.dir}" title="#{imagen.dir}")
+										if imagen.extension1 != "noesta"
+											img(src="/public/imagenes/#{imagen._id}s.#{imagen.extension1}" alt="#{imagen.dir}" title="#{imagen.dir}")
+										if imagen.extension2 != "noesta"
+											img(src="/public/imagenes/#{imagen._id}t.#{imagen.extension2}" alt="#{imagen.dir}" title="#{imagen.dir}")
+										if imagen.extension3 != "noesta"
+											img(src="/public/imagenes/#{imagen._id}u.#{imagen.extension3}" alt="#{imagen.dir}" title="#{imagen.dir}")
+										if imagen.extension4 != "noesta"
+											img(src="/public/imagenes/#{imagen._id}v.#{imagen.extension4}" alt="#{imagen.dir}" title="#{imagen.dir}")
+								.risponsive
+									div(id="da" name="da")
+										if  imagen.preriodo == "Mes" 
+												p="Ciudad "+imagen.tipo+" $ "+imagen.precio+" "+imagen.periodo
+										if  imagen.preriodo1 == "Mes" 
+												p="Ciudad "+imagen.tipo+" $ "+imagen.precio1+" "+imagen.preriodo1
+										if  imagen.preriodo2 == "Mes" 
+												p="Ciudad "+imagen.tipo+" $ "+imagen.precio2+" "+imagen.periodo2
+										if  imagen.preriodo3 == "Mes"
+												p="Ciudad "+imagen.tipo+" $ "+imagen.precio3+" "+imagen.preriodo3
+										if  imagen.preriodo4 == "Mes"
+												p="Ciudad "+imagen.tipo+" $ "+imagen.precio4+" "+imagen.preriodo4
+										else
+											p="Ciudad "+imagen.tipo+" $ "+imagen.precio+" "+imagen.periodo
+									div
+										h2 Servicios especificos
+									div(id="especificos" name="especificos")
+										if  imagen.radio1 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-13.png")
+													p internet
+										if  imagen.radio1 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-12.png")
+													p Puestos
+													p=imagen.radio5 
+										if  imagen.radio8 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-11.png")
+													p Telefono
+										if  imagen.radio2 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-10.png")
+													p limpieza
+										if  imagen.radio9 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-06.png")
+													p Dia gratis de prueba
+										if  imagen.radio3 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-09.png")
+													p TV
+										if  imagen.radio4 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-08.png")
+													p Tablero
+										if  imagen.radio7 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-15.png")
+													p Interior
+										if  imagen.radio10 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-07.png")
+													p mesa de trabajo
+									div(id="dlugar" name="dlugar")
+										p=imagen.dlugar
+									div(id="generales2" name="generales2")
+										div(id="generales" name="generales")
+											h2 Servicios generales
+											if  imagen.radio11 == "on" 
+												p - Cocina
+											if  imagen.radio12 == "on" 
+												p - Recepcion
+											if  imagen.radio13 == "on" 
+												p - Sala de juntas 
+											if  imagen.radio14 == "on" 
+												p - Centro de copiado/ Imapresoras
+											if  imagen.radio15 == "on" 
+												p - Parqueadero
+											if  imagen.radio16 == "on" 
+												p - Horario 24/7
+											if  imagen.radio17 == "on" 
+												p - Espacio compartido
+											if  imagen.radio18 == "on" 
+												p - Discapacitados
+										div(id="generales" name="generales")
+											if  imagen.radio19 == "on" 
+												p - Bicicletero
+											if  imagen.radio27 == "on" 
+												p - Catering
+											if  imagen.radio20 == "on" 
+												p - Cafe 
+											if  imagen.radio21 == "on" 
+												p - Agua
+											if  imagen.radio22 == "on" 
+												p - Servicio de correo
+											if  imagen.radio23 == "on" 
+												p - Restaurante
+											if  imagen.radio24 == "on" 
+												p - Pet friendly
+											if  imagen.radio25 == "on" 
+												p - Proyector
+											if  imagen.radio26 == "on" 
+												p - Bodega/almacenamiento 
+
+									div
+											form(action='/app/envio2', method='POST' )
+												.roww
+													input#name.field(type='text' name='name' placeholder='Nombre' value="#{imagen.creator.username}" style="display:none;")
+												.roww
+													input#ciudad.field(type='text', name='ciudad', placeholder='Ciudad' value="#{imagen.Localidad}" style="display:none;")
+												.roww
+													input#telefono.field(type='text', name='telefono', placeholder='Teléfono' style="display:none;"  value="<p> precio "+imagen.precio+" perido "+imagen.periodo+"<p> precio2 "+imagen.precio1+" perido 2 "+imagen.preriodo1+"<p> precio 3 "+imagen.precio2+" peridoo 2  "+imagen.periodo2 +"<p> precio 3 + " +imagen.precio3+" periodo 3  "+imagen.preriodo3 +"<p> precio 4" +imagen.precio4+" perido 4 "+imagen.preriodo4)
+												.roww
+													input#mensaje( name='mensaje',placeholder='Mensaje'  value="http://localhost:5002/detalle/#{filtro}" style="display:none;")
+													input(type='hidden', name='adwords', value='2' style="display:none;")
+												input#sendMessage.envia.agendarvisi(type='button', value='AGENDA TU VISITA' style="background-color: #ffda00; color: #999; padding: 3px; float: initial; margin: 10px 10px 10px 38%; height: auto; width: auto; font-size: 30px; box-decoration-break: none; box-shadow: none; border-style: none;")
+									div.envok(id="envok" )
+				div(id="sibus" class="sibus")
+				div(id="nobus" class="nobus")
+
+				div
+					.overlay-container(style="z-index:1000;")
+					.overlay-containers(style="z-index:1000;")
+					.overlay-container2(style="z-index:1000;")
+
+			script(type='text/javascript', src='/public/js/jquery.min.v1.js')
+			script(type='text/javascript', src='/public/js/bootstrap.min.js')
+			script(type='text/javascript', src='/public/js/cambio.js')
+			script(src='/public/slick/slick.min.js', type='text/javascript', charset='utf-8')
+			script(type='text/javascript').
+				$(document).on('ready', function() {
+				$('.one-time').slick({
+				dots: true,
+				infinite: true,
+				speed: 900,
+				slidesToShow: 1,
+				adaptiveHeight: true,
+				fade:true,
+				autoplay: true,
+				autoplaySpeed: 9900,
+				});
+				$('.slider-for').slick({
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows: false,
+				fade: true,
+				asNavFor: '.slider-nav',
+				centerMode: true, focusOnSelect: true,autoplay: true, autoplaySpeed: 45000, });
+				$('.slider-nav').slick({
+				slidesToShow: 4,slidesToScroll: 1,
+				asNavFor: '.slider-for',centerMode: false,
+				focusOnSelect: true
+				});
+				$('.single-item').slick();
+				});
+			script(type='text/javascript').
+				twttr.widgets.createTimeline({
+				sourceType: "profile",
+				screenName: "fabric"
+				}, document.getElementById("container"))

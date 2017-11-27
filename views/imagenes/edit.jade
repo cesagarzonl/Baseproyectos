@@ -1,0 +1,466 @@
+doctype html 
+html(lang="es")
+	head  
+		meta(charset="utf-8")
+		meta(name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+		meta(name="" description="")
+		title Workey 
+		link(rel="stylesheet" type="text/css" href="/../public/css/bootstrap.css")
+		link(rel="stylesheet" type="text/css" href="/../../public/css/croppie.css")
+		link(rel="stylesheet" type="text/css" href="/../../public/css/elbusca.css")
+		link(rel="shortcut icon" href="/../public/imagenes/img/antede.png")
+	body( style="overflow-x:hidden; overflow-y:scroll;")
+		header
+					div(class="colorarriba" align='center')
+						.picture()
+								a(href='/' )
+									img(class="logop" id="logop" name="logop" src='/public/imagenes/img/logos-01.png')
+								ul.nav.navbar-nav.navbar-right(style="padding-left: 30%")
+									li
+										a.buttonss(href="/index/bogota" style="" )  Buscar Espacio
+									li
+										input.button(value='Contacto' data-type="zoomout")
+									li
+										input.button(value='Ingresar', data-type='zoomin' style="display:none;")
+									li.dropdown
+										a.buttonss(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') #{user.username}
+											span.caret
+										ul.dropdown-menu
+											li
+												a(href="/iniciado/#{user.username}/#{user.id}") Mis oficinas
+											li
+												a(href="/app/imagenes/newpromo") Agregar Oficinas
+											li
+												a(href="/app/imagenes") Eliminar Oficinas
+											li 
+												a(href="/app/delett/editt/#{user.id}") Modificar Usuario
+											li 
+												a(href="/app/deslogear") Cerrar sesion
+	.divicion 
+	.divicion
+		.Contenedor(style="padding: 3%;")
+			div
+				p(style="margin:20px; font-size: 20px;") ¡Hola 
+					font(color="#ffda00" style="font-weight: bold;") #{user.username} 
+					|, vamos a publicar tu espacio de trabajo!
+				form(action="/app/imagenes" method="POST" enctype="multipart/form-data" )
+					div(id="formm" name="formm")
+						div(style="width: 100%; margin: 30px; display: flex;")
+							div
+								input(type="text", name="imgs22", placeholder="Titulo de la imagen ", id="imgs22", class"form-control" value="1" style="display:none;")
+								input(type="text", name="imgs11", placeholder="Titulo de la imagen ", id="imgs11", class"form-control" value="1" style="display:none;")
+								input(type="text", name="imgs12", placeholder="Titulo de la imagen ", id="imgs12", class"form-control" value="1" style="display:none;")
+								input(type="text", name="imgs13", placeholder="Titulo de la imagen ", id="imgs13", class"form-control" value="1" style="display:none;")
+								input(type="text", name="imgs14", placeholder="Titulo de la imagen ", id="imgs14", class"form-control" value="1" style="display:none;")
+							div.fotografias#Fotografias
+								div(style="width: 100%; ")
+											h2 Subir Fotografías
+								div(style="width: 50%;")
+									input#upload.upload(  value='', accept='image/*', type='file'  required onchange="cargaaa()" style="display:none;" )
+									label(for="upload")
+										img(id="imgs" name="imgs" src="/public/imagenes/#{imagen._id}.#{imagen.extension}" style=" max-width: 195px ; height: 169px;" )
+									div.fotografias#Fotografias(style="width: 50%; margin-left:50px;")
+											div(style="width: auto;")
+												input#upload1.upload1( value='', accept='image/*', type='file'  onchange="cargaaa1()" style="display:none;")
+												label(for="upload1")
+													img(id="imgs1" name="imgs1" src="/public/imagenes/#{imagen._id}s.#{imagen.extension1}" style=" width: 100px; height: 85px;")
+											div(style="width: auto;")
+												input#upload2.upload2( value='', accept='image/*', type='file'  onchange="cargaaa2()" style="display:none;")
+												label(for="upload2")
+													img(id="imgs2" name="imgs2" src="/public/imagenes/#{imagen._id}t.#{imagen.extension2}" style=" width: 100px; height: 85px;")
+									div.fotografias#Fotografias(style="width: 50%; margin-left:4px;")
+											div(style="width: auto;")
+												input#upload3.upload3( value='', accept='image/*', type='file'  onchange="cargaaa3()" style="display:none;")
+												label(for="upload3")
+													img(id="imgs3" name="imgs3" src="/public/imagenes/#{imagen._id}u.#{imagen.extension3}" style=" max-width: 100px; height: 85px;")
+											div(style="width: auto;")
+												input#upload4.upload4( value='', accept='image/*', type='file'  onchange="cargaaa4()" style="display:none;")
+												label(for="upload4")
+													img(id="imgs4" name="imgs4" src="/public/imagenes/#{imagen._id}v.#{imagen.extension4}" style=" max-width: 100px; height: 85px;")
+	
+							div.datoses#datoses
+								div
+									h3 Datos del espacio
+								div(id="noimage" class="noimage")
+									input(type="text", name="Localidad", placeholder="Ciudad/Localidad ", id="Localidad", class"form-control" required list="datos" autocomplete="off" value="#{imagen.Localidad}")
+									datalist(id="datos" required)
+																	option(value="Usaquen")
+																	option(value="Chapinero")
+																	option(value="Santa Fe")
+																	option(value="San Cristóbal")
+																	option(value="Usme")
+																	option(value="Tunjuelito")
+																	option(value="Bosa")
+																	option(value="bogota")
+																	option(value="Kennedy")
+																	option(value="Fontibon")
+																	option(value="Engativa")
+																	option(value="Suba")
+																	option(value="Barrios Unidos")
+																	option(value="Teusaquillo")
+																	option(value="Los Martires") 
+																	option(value="Antonio Nariño")
+																	option(value="Puente Aranda")
+																	option(value="La Candelaria")
+																	option(value="Rafael Uribe Uribe 	")
+																	option(value="Ciudad Bolívar")
+																	option(value="Sumapaz")
+								div
+									input(type="text", name="dir", placeholder="Direccion", id="dir", class"form-control"  value="#{imagen.dir}" required autocomplete="off" )
+								div
+									select(type="text", name="tipo", placeho der="es local ", id="tipo", class"form-control" style="width: auto;" required autocomplete="off" )
+										option(value="privada" selected="Privadada") Oficina Privada
+										option(value="Compratido" selected="Compratido") Escritorio Compratido
+										option(value="Dedicado" selected="Dedicado") Escitorio Dedicado
+										option(value="Auditorio" selected="Auditorio") Auditorio
+										option(value="Sala" selected="Sala") Sala de juntas
+										option(value="#{imagen.tipo}" selected="#{imagen.tipo}") oficina #{imagen.tipo}
+								div
+									input(type="text", name="precio", placeholder="precio", id="precio", class"form-control" required autocomplete="off" value="#{imagen.precio}"  )
+									select(type="text", name="preriodo", placeho der="es local ", id="preriodo", class"form-control" style="width: auto;")
+										option(value="Hora" selected="Hora") Hora
+										option(value="Dia" selected="dia") Dia
+										option(value="Semana" selected="semana") Semana
+										option(value="Mes" selected="mes") Mes
+										option(value="Año" selected="ano") Año
+										if imagen.preriodo != undefined
+											option(value="#{imagen.preriodo}" selected="#{imagen.preriodo}") #{imagen.preriodo}
+										else
+											option(value="" selected="selected") -Tipo de espacio-
+									a(id="adi" name="adi" onclick="mas()") + 
+								div(id="mas1" name="mas1" class="mas1" style="display:none;")
+									input(type="text", name="precio1", placeholder="precio", id="precio1", class"form-control" required autocomplete="off" value="#{imagen.precio1}")
+									select(type="text", name="preriodo1", placeho der="es local ", id="preriodo1", class"form-control" style="width: auto;" )
+										option(value="Hora" selected="Hora") Hora
+										option(value="Dia" selected="dia") Dia
+										option(value="Semana" selected="semana") Semana
+										option(value="Mes" selected="mes") Mes
+										option(value="Año" selected="ano") Año
+										if imagen.preriodo1 != undefined
+											option(value="#{imagen.preriodo1}" selected="#{imagen.preriodo1}") #{imagen.preriodo1}
+										else
+											option(value="" selected="selected") -Tipo de espacio-
+									a(id="adi" name="adi" onclick="mas2()") + 
+								div(id="mas2" name="mas2" class="mas2" style="display:none;")
+									input(type="text", name="precio2", placeholder="precio", id="precio2", class"form-control" autocomplete="off" value="#{imagen.precio2}")
+									select(type="text", name="preriodo2", placeho der="es local ", id="preriodo2", class"form-control" style="width: auto;")
+										option(value="Hora" selected="Hora") Hora
+										option(value="Dia" selected="dia") Dia
+										option(value="Semana" selected="semana") Semana
+										option(value="Mes" selected="mes") Mes
+										option(value="Año" selected="ano") Año
+										if imagen.preriodo2 != undefined
+											option(value="#{imagen.preriodo2}" selected="#{imagen.preriodo2}") #{imagen.preriodo2}
+										else
+											option(value="" selected="selected") -Tipo de espacio-
+									a(id="adi" name="adi" onclick="mas3()") + 
+								div(id="mas3" name="mas3" class="mas3" style="display:none;")
+									input(type="text", name="precio3", placeholder="precio", id="precio3", class"form-control" autocomplete="off" value="#{imagen.precio3}" )
+									select(type="text", name="preriodo3", placeho der="es local ", id="preriodo3", class"form-control" style="width: auto;")
+										option(value="Hora" selected="Hora") Hora
+										option(value="Dia" selected="dia") Dia
+										option(value="Semana" selected="semana") Semana
+										option(value="Mes" selected="mes") Mes
+										option(value="Año" selected="ano") Año
+										if imagen.preriodo3 != undefined
+											option(value="#{imagen.preriodo3}" selected="#{imagen.preriodo3}") #{imagen.preriodo3}
+										else
+											option(value="" selected="selected") -Tipo de espacio-
+									a(id="adi" name="adi" onclick="mas4()") + 
+								div(id="mas4" name="mas4" class="mas4" style="display:none;")
+									input(type="text", name="precio4", placeholder="precio", id="precio4", class"form-control" autocomplete="off"  value="#{imagen.precio4}")
+									select(type="text", name="preriodo4", placeho der="es local ", id="preriodo4", class"form-control" style="width: auto;")
+										option(value="Hora" selected="Hora") Hora
+										option(value="Dia" selected="dia") Dia
+										option(value="Semana" selected="semana") Semana
+										option(value="Mes" selected="mes") Mes
+										option(value="Año" selected="ano") Año
+										if imagen.preriodo4 != undefined
+											option(value="#{imagen.preriodo4}" selected="#{imagen.preriodo4}") #{imagen.preriodo4}
+										else
+											option(value="" selected="selected") -Tipo de espacio-
+						.risponsive
+								textarea(type="text", rows="10" cols="40" name="dlugar", placeholder="Descripcion del lugar.", id="dlugar", class"form-control" value="#{imagen.dlugar}"  required ) #{imagen.dlugar}
+						div
+							h2 específicos
+						.risponsive
+							div(id="especificos" name="especificos")
+								div
+										label(for="radio1")
+											img(src="/public/imagenes/img/icon/Iconos-13.png")
+											|  Internet
+										input(class ="radiobu" type="checkbox", name="radio1", id="radio1", class"form-control")
+									if imagen.radio1 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio1').checked = 1;
+								div
+									label(for="radio6")
+										img(src="/public/imagenes/img/icon/Iconos-15.png")
+										|   Interior
+									input(type="checkbox", name="radio6", id="radio6", class"form-control") 
+									if imagen.radio6 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio6').checked = 1;
+								div
+									label(for="radio2")
+										img(src="/public/imagenes/img/icon/Iconos-10.png")
+										|   Limpieza
+									input(type="checkbox", name="radio2", id="radio2", class"form-control") 
+									if imagen.radio2 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio2').checked = 1;
+								div
+									label(for="radio3")
+										img(src="/public/imagenes/img/icon/Iconos-09.png")
+										|   Televisor
+									input(type="checkbox", name="radio3", id="radio3", class"form-control") 
+									if imagen.radio3 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio3').checked = 1;
+								div
+									label(for="radio4")
+										img(src="/public/imagenes/img/icon/Iconos-08.png")
+										|  tablero
+									input(type="checkbox", name="radio4", id="radio4", class"form-control") 
+									if imagen.radio4 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio4').checked = 1;
+								div
+									label(for="radio8")
+										img(src="/public/imagenes/img/icon/Iconos-11.png")
+										|  Telefono
+									input(type="checkbox", name="radio8", id="radio8", class"form-control") 
+									if imagen.radio8 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio8').checked = 1;
+								div
+									label(for="radio9")
+										img(src="/public/imagenes/img/icon/Iconos-06.png")
+										|   prueba
+									input(type="checkbox", name="radio9", id="radio9", class"form-control") 
+									if imagen.radio9 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio9').checked = 1;
+								div
+									label(for="radio10")
+										img(src="/public/imagenes/img/icon/Iconos-07.png")
+										|  Mesa trabajo
+									input(type="checkbox", name="radio10", id="radio10", class"form-control" ) 
+									if imagen.radio10 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio10').checked = 1;
+								div
+									label(for="radio5")
+										img(src="/public/imagenes/img/icon/Iconos-12.png")
+									label(for="radio5") Cantidad de personas
+									input(type="number", name="radio5", id="radio5", class"form-control" value="#{imagen.radio5}") 
+						div
+							h2 Generales
+						div(style="width: 100%; margin: 30px; display: flex;")
+							div.fotografias#Fotografias
+								div
+									input(type="checkbox", name="radio11", id="radio11", class"form-control") 
+									label(for="radio11")  Cocina
+									if imagen.radio11 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio11').checked = 1;
+								div
+									input(type="checkbox", name="radio12", id="radio12", class"form-control") 
+									label(for="radio12")  Recepcion
+									if imagen.radio12 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio12').checked = 1;
+								div
+									input(type="checkbox", name="radio13", id="radio13", class"form-control") 
+									label(for="radio13")  Sala de juntas
+									if imagen.radio13 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio13').checked = 1;
+								div
+									input(type="checkbox", name="radio14", id="radio14", class"form-control") 
+									label(for="radio14")  Impresora
+									if imagen.radio14 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio14').checked = 1;
+								div
+									input(type="checkbox", name="radio15", id="radio15", class"form-control") 
+									label(for="radio15")  Parqueadero
+									if imagen.radio15 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio15').checked = 1;
+								div
+									input(type="checkbox", name="radio17", id="radio17", class"form-control") 
+									label(for="radio17")  Espacios compartidos
+									if imagen.radio17 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio17').checked = 1;
+								div
+									input(type="checkbox", name="radio18", id="radio18", class"form-control") 
+									label(for="radio18")  Discapacitados
+									if imagen.radio18 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio18').checked = 1;
+							div.fotografias#Fotografias
+								div
+									input(type="checkbox", name="radio19", id="radio19", class"form-control") 
+									label(for="radio19")  Bicicletero
+									if imagen.radio19 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio19').checked = 1;
+								div
+									input(type="checkbox", name="radio27", id="radio27", class"form-control") 
+									label(for="radio27")  Catering
+									if imagen.radio27 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio27').checked = 1;
+								div
+									input(type="checkbox", name="radio20", id="radio20", class"form-control") 
+									label(for="radio20")  Cafe
+									if imagen.radio20 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio20').checked = 1;
+								div
+									input(type="checkbox", name="radio21", id="radio21", class"form-control") 
+									label(for="radio21")  Agua
+									if imagen.radio21 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio21').checked = 1;
+								div
+									input(type="checkbox", name="radio22", id="radio22", class"form-control") 
+									label(for="radio22")  Servicio Correo
+									if imagen.radio22 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio22').checked = 1;
+								div
+									input(type="checkbox", name="radio23", id="radio23", class"form-control") 
+									label(for="radio23")  Restaurante
+									if imagen.radio23 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio23').checked = 1;
+								div
+									input(type="checkbox", name="radio24", id="radio24", class"form-control") 
+									label(for="radio24")  Pet friendly
+									if imagen.radio24 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio24').checked = 1;
+								div
+									input(type="checkbox", name="radio25", id="radio25", class"form-control") 
+									label(for="radio25")  Proyector
+									if imagen.radio25 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio25').checked = 1;
+								div
+									input(type="checkbox", name="radio26", id="radio26", class"form-control") 
+									label(for="radio26")  Bodega/almacenamiento
+									if imagen.radio26 == "on" 
+										script(type='text/javascript').
+											document.getElementById('radio26').checked = 1;
+								div
+									input(type="text", name="radio16", id="radio16", class"form-control" autocomplete="off" value="#{imagen.radio16}") 
+									label(for="radio16")  Horarios
+								div
+									input(type="submit" value="Actualizar oficina" class="btn btn-info" style="width: auto; margin: 10px auto 0px ; background: rebeccapurple;color: white ;" name="subirimg" id="subirimg" )
+				div(class="ejpromocion" align="center")
+								div
+				div(id="nobus" class="nobus")
+									div(id="sibus" class="sibus")
+				div
+					.overlay-container
+						.window-container.zoomout
+							.sesions
+								p(style="color:#fff;" id="creacu" ) Contacto
+									span(class="close") X
+								form(action="envio3", method="POST", id="for" class="for")
+												div(class="form-group" style="")
+													label(for="name") Nombre completo
+													input(type="text", name="name", placeholder="nombre", id="name", class"form-control")
+												div 
+													label(for="correo2") Correo
+													input(type="text", name="correo2", placeholder="Correo", id="correo2", class"form-control")
+												div 
+													label(for="tel") Telefono
+													input(type="text", name="tel", placeholder="Telefono", id="tel", class"form-control")
+												div 
+													label(for="asunto") Asunto
+													select(type="text", name="asunto", placehoder="", id="asunto", class"form-control") 
+														option(value="Busco"  selected=" Busco") Busco oficina  
+														option(value="Publicar"  selected="Publicar") Publicar oficina
+														option(value="Otro"  selected="Otro")  Otro
+														option(value=""  selected="" style="display:none;")  --Selecciona--
+												div 
+													label(for="mess") Mensaje
+													textarea(type="text", name="mess", placeholder="", id="mess", class"form-control" style="width:100%; height:100px; background-color:#E8E8E8;")
+												div 
+													input(type="submit" value="Enviar" id="send" clas="send")
+
+						.window-container.zoomin
+							.sesions
+								p(style="color:#fff;" id="creacu" ) Ingresar
+									span(class="close") X
+								form(action="session", method="POST", id="for" class="for")
+									div(class="form-group" style="padding-top: 30px; ")
+										label(for="email") Correo
+										input(type="text", name="email", placeholder="Email", id="email", class"form-control")
+									div 
+										label(for="password") Contraseña
+										input(type="password", name="password",placeholder="Contrasña", id="password" class"form-control" )
+									div 
+										input(type="submit" value="Ingresar" id="send" clas="send")
+									div
+										p(style="padding-left: 25%") Nuevo en workey? 
+												input.rrs(value='Crea una cuenta' data-type="rrr")
+					.overlay-container2
+						.window-container2.rrr
+							.sesions
+								p(style="color:#fff;" id="creacu" ) INSCRIBIRSE
+									span(class="close") X
+								form(action="users", method="POST"  name="fors" id="fors" class="fors")
+
+									div(class="form-group")
+										label(for="username") Nombre Completo
+										input(type="text", name="username",placeholder="Dime tu username", id="username" class"form-control"  required)
+									div 
+										label(for="telefono") telefono
+										input(type="text", name="telefono",placeholder="Dime tu Telefono", id="telefono" class"form-control"  required)
+									div
+										label(for="email") Correo 
+										input(type="email", name="email", placeholder="Email", id="email", class"form-control" title="por el correo" required) 
+									div 
+										label(for="nit") Cédula/NIT
+										input(type="text", name="nit",placeholder="Dime tu nit o tu cc", id="nit" class"form-control",  required, onchange="val()")
+									div 
+										label(for="password")  Contraseña
+										input(type="password", name="password",placeholder="Contraseña", id="password" class"form-control" required )
+									div 
+										label(for="password") Confirmacion Contraseña
+										input(type="password", name="password_confirmation",placeholder="Confirma Contraseña", id="password" class"form-control" required)
+
+
+									div(style="display:none;") 
+										label(for="subirinfo")
+										input(type="text", name="subirinfo",id="subirinfo" value="true")
+									div 
+										input(type="submit" value="INSCRIBIRSE" class="btn btn-info" id="send" clas="send")
+				section(id="sectionnn" name="sectionnn" class="sectionnn" style="display:none; ")
+						.demo-wrap.upload-demo(style="widtt:700px;")
+							.container
+								.grid(style="position: absolute; top: 20px; left: 15%; width: 70%;")
+									.col-1-2
+										.upload-demo-wrap
+												#upload-demo.croppie-container
+													button.upload-result#upload-result( onclick="preload()") Recortar imagen
+													button.upload-result1#upload-result1( onclick="preload()") Recortar imagen
+													button.upload-result2#upload-result2( onclick="preload()") Recortar imagen
+													button.upload-result3#upload-result3( onclick="preload()") Recortar imagen
+													button.upload-result4#upload-result4( onclick="preload()") Recortar imagen
+													div
+														button( onclick="nocargaaa()") Cancelar
+	script(src='/../public/js/jquery-2.js')
+	script(src='/../public/js/demo1.js')
+	script(src='/../public/js/croppie.js')
+	script(src='/../public/js/cargaimg.js')
+	script(src='/../public/js/cambio.js')
+	script(type='text/javascript', src='../../public/js/bootstrap.js')
+	script Demo.init()
+	script Demo1.init1()
+	script sacamas.init()

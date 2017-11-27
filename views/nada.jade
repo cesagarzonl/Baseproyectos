@@ -1,0 +1,16 @@
+extends ./layoutindexx.jade
+block contenido 
+	.coreccion
+		for user in users
+			div(class="risponsive" style="display: -webkit-inline-flex; width: 100%;    padding: 20px; margin: 20px; ")
+				p(style="margin: 2px;")  usuario : #{user.username} 
+				p(style="margin: 2px;")  email : #{user.email} 
+				p(style="margin: 2px;")  telefono : #{user.telefono} 
+				p(style="margin: 2px;")  nit : #{user.nit} 
+		for user in users
+			div(class="risponsive" style="display: -webkit-inline-flex; width: 100%;    padding: 20px; margin: 20px; ")
+				p(style="margin: 2px;")  usuario : #{user} 
+		script(type='text/javascript', src='/public/js/bootstrap.js')
+	script(type='text/javascript', src='/public/js/bootstrap.min.js')
+	script(type='text/javascript', src='/public/js/jquery.min.js')
+	script(type='text/javascript', src='/public/js/jquery.min.v1.js')

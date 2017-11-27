@@ -1,0 +1,44 @@
+doctype html 
+html(lang="es")
+	head  
+		meta(charset="utf-8")
+		meta(name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+		meta(name="" description="")
+		title ONLY PET
+		link(rel="stylesheet" type="text/css" href="/../public/slick/slick-theme.css")
+		link(rel="stylesheet" type="text/css" href="/../public/slick/slick.css")
+		link(rel="stylesheet" type="text/css" href="/../public/css/animate.css")
+		link(rel="stylesheet" type="text/css" href="/../public/css/bootstrap.css")
+
+		link(rel="stylesheet" type="text/css" href="/../../public/css/elbusca.css")
+
+	body( style="overflow-x:hidden; overflow-y:scroll;")
+		header
+					div(class="colorarriba" align='center')
+						.picture()
+								a(href='/' )
+									img(class="logop" id="logop" name="logop" src='/public/imagenes/img/logos-01.png')
+								ul.nav.navbar-nav.navbar-right(style="padding-left: 30%")
+									li
+										a.buttonss(href="/index/bogota" style="" )  Buscar Espacio
+									li
+										input.button(value='Contacto' data-type="zoomout")
+									li
+										input.button(value='Ingresar', data-type='zoomin' style="display:none;")
+									li.dropdown
+										a.buttonss(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') #{user.username}
+											span.caret
+										ul.dropdown-menu
+											li
+												a(href="/iniciado/#{user.username}/#{user.id}") Mis oficinas
+											li
+												a(href="/app/imagenes/newpromo") Agregar Oficinas
+											li
+												a(href="/app/imagenes") Eliminar Oficinas
+											li 
+												a(href="/app/delett/editt/#{user.id}") Modificar Usuario
+											li 
+												a(href="/app/deslogear") Cerrar sesion
+		.divicion
+block contenido 
+script(type='text/javascript', src='../../public/js/bootstrap.js')

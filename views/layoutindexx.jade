@@ -1,0 +1,36 @@
+doctype html
+html(lang="es")
+	head
+		meta(charset="utf-8")
+		meta(name="description" content="")
+		meta(name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+		title ONLY PET 
+		link(rel="stylesheet" type="text/css" href="/public/css/bootstrap.css")
+		link(rel="stylesheet" type="text/css" href="/public/css/elbusca.css")
+		link(rel="shortcut icon" href="public/imagenes/img/ntede.comr.png")
+
+		link(href='https://fonts.googleapis.com/css?family=Anton', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Russo+One', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=PT+Serif', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Shrikhand', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Clicker+Script', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Oxygen+Mono', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Numans', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Comfortaa', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Permanent+Marker', rel='stylesheet')
+		script(src="/socket.io/socket.io.js")
+	body.landing( style="overflow-x:hidden; overflow-y:scroll;")
+		header
+					div(class="colorarriba" align='center')
+						.picture(style="margin-bottom:4px;")
+								a(href='/' )
+									img(src='/public/imagenes/img/logos-01.png' class="logop" id="logop" name="logop")
+								ul.nav.navbar-nav.navbar-right(style="padding-left: 30%")
+													li
+														input.button(value='Contacto' data-type="zoomout")
+													li.dropdown
+														input.buttons(value='Ingresar', data-type='zoomin' readonly="readonly")
+													li
+														a.buttonss(href="/app/imagenes/newpromo" style="" )  Publica espacio
+block contenido 

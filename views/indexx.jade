@@ -1,0 +1,172 @@
+extends ./layoutindexx.jade
+block contenido
+	section#encontrador
+		form(action='/filtross', method='POST', label='' style="text-align:center;"  id="sear" name="sear")
+			div
+				input(placeholder="UBICACIÓN" type="search" id="mysearch3" name="mysearch3" list="datos" autocomplete="off" value="#{filtro[2]}")
+				datalist.datos(id="datos")
+			div
+				select(type="text", name="tipoin", placeho der="es local ", id="tipoin", class"form-control")
+					option(value="privada" selected="Privadada") Oficina Privada
+					option(value="Compratido" selected="Compratido") Escritorio Compratido
+					option(value="Dedicado" selected="Dedicado") Escitorio Dedicado
+					option(value="Auditorio" selected="Auditorio") Auditorio
+					option(value="Sala" selected="Sala") Sala de juntas
+					option(value="" selected="selected" style="display:none;") Tipo de epacio	
+			div
+				select(type="text", name="preriodin", placeho der="es local ", id="preriodin", class"form-control")
+					option(value="Hora" selected="Hora") Hora
+					option(value="Dia" selected="dia") Dia
+					option(value="Semana" selected="semana") Semana
+					option(value="Mes" selected="mes") Mes
+					option(value="Año" selected="ano") Año
+					option(value="" selected="" style="display:none;") Periodo
+			div
+				select(type="text" name="rangoin" id="rangoin" class="rangoin")
+					option(value="0a5" selected="Hora") de $ 0 a $ 500.000 
+					option(value="5a10" selected="dia") de $ 500.001 a $ 1.000.000 
+					option(value="10a25" selected="semana") de $ 1.000.001 a $ 2.500.000
+					option(value="25a50" selected="mes") de $ 2.500.001 a $ 5.000.000
+					option(value="mas50" selected="ano") Más $ 5.000.000
+					option(value="" selected="" style="display:none;") Rango precios
+				div
+					input.imputts(value='Buscar', type='submit')
+	.containers
+			for imagen in imagenes
+				if imagen.Localidad == filtro[2]
+					if imagen.tipo == filtro[3]
+						div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if imagen.preriodo == filtro[3] || imagen.preriodo1 == filtro[3] || imagen.preriodo2 == filtro[3] || imagen.preriodo3 == filtro[3] 
+						div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					if "0a5" == filtro[3]
+							if imagen.precio <= 500000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "5a10"
+							if imagen.precio >= 500000 && imagen.precio <= 1000000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "10a25"
+							if imagen.precio >= 1000000 && imagen.precio <= 2500000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "25a50"
+							if imagen.precio >= 2500000 && imagen.precio <= 5000000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "mas50"
+							if imagen.precio >= 5000000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+				else if imagen.tipo == filtro[2]
+					if imagen.preriodo == filtro[3] || imagen.preriodo1 == filtro[3] || imagen.preriodo2 == filtro || imagen.preriodo3 == filtro[3]
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					if "0a5" == filtro[3]
+							if imagen.precio <= 500000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "5a10"
+							if imagen.precio >= 500000 && imagen.precio <= 1000000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "10a25"
+							if imagen.precio >= 1000000 && imagen.precio <= 2500000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "25a50"
+							if imagen.precio >= 2500000 && imagen.precio <= 5000000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "mas50"
+							if imagen.precio >= 5000000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+				else if imagen.preriodo == filtro[2] || imagen.preriodo1 == filtro[2] || imagen.preriodo2 == filtro[2] || imagen.preriodo3 == filtro[2] 
+					if "0a5" == filtro[3]
+							if imagen.precio <= 500000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "5a10"
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "10a25"
+							if imagen.precio >= 1000000 && imagen.precio <= 2500000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "25a50"
+							if imagen.precio >= 2500000 && imagen.precio <= 5000000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+					else if "mas50"
+							if imagen.precio >= 5000000
+								div(class="ubicacion2")
+										a(href="/detalle/#{imagen._id}" class="ordenado")
+											img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											p=imagen.dlugar
+											p="$"+imagen.precio1+"/"+imagen.preriodo1
+			div(class="nomestra" id="nomestra" name="nomestra")
+			div(id="sibus" class="sibus")
+			div(id="nobus" class="nobus")
+			div
+					.overlay-container
+					.overlay-containers
+					.overlay-container2
+
+		script(type='text/javascript', src='../../public/js/bootstrap.js')
+		script(type='text/javascript', src='../../public/js/jquery.min.js')
+		script(type='text/javascript', src='/public/js/cambio.js')
+		script(type='text/javascript', src='/public/js/buscain.js')

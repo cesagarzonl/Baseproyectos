@@ -1,0 +1,60 @@
+doctype html
+html(lang="es")
+	head
+		meta(charset="utf-8")
+		meta(name="description" content="")
+		meta(name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+		title WORKEY 
+		link(rel="stylesheet" type="text/css" href="/public/css/bootstrap.css")
+		link(rel="stylesheet" type="text/css" href="/public/css/estilos2.css")
+		link(rel="stylesheet" type="text/css" href="/public/css/elbusca.css")
+		link(rel="shortcut icon" href="public/imagenes/img/ntede.comr.png")
+	body.landing( style="overflow-x:hidden; overflow-y:scroll;")
+		header
+					div(class="colorarriba" align='center')
+						.picture(style="margin-bottom:4px;")
+								a(href='/' )
+									img(src='/public/imagenes/img/logos-01.png' class="logop" id="logop" name="logop")
+								ul.nav.navbar-nav.navbar-right(style="padding-left: 40%")
+													li.dropdown
+														input.button(value='Contacto' data-type="zoomout" readonly="readonly")
+													li.dropdown
+														input.buttons(value='Ingresar', data-type='zoomin' readonly="readonly")
+												if user == undefined
+													li.dropdown
+														input.buttons(value='Holaaaaaaa', data-type='zoomin' readonly="readonly")
+					section#banner
+						h2 LA OFICINA QUE TIENES
+						p Workey te ayuda a ganar dinero con
+							| tu espacio subutilizado
+						ul.actions
+						section
+									div(id="sibus" class="sibus")
+										li.nobus
+											form(style='text-align: center;', action='/hosts', method='POST', label='')
+														input(placeholder="Ubicación" type="search" id="mysearch1" name="mysearch" autocomplete="off" list="datos2" )
+														datalist(id="datos2" class="datos2")
+														span.glyphicon(style='')
+															input.imputt(value='PUBLICAR', type='submit')
+									div(id="nobus" class="nobus active2")
+				div
+					.overlay-container
+					.overlay-containers
+					.overlay-container2
+			footer
+						div
+							h2 Contacta a nuestro equipo para más información llámanos o escríbenos.
+							h2 Todos los precios están sujetos a cambios sin previo aviso
+						div
+							p Tel: +(57) 3134301091
+							p Email:workeybogota@gmail.com
+						div(style="padding-left: 5%;")
+							div(id="face" class="face" name="face")
+								a(href="https://www.facebook.com/WorkeyOffice/?fref=ts")
+									img(src="/public/imagenes/img/face.png" width="50px")
+							div(id="face" class="face" name="face")
+								a(href="https://www.linkedin.com/company/11280196/")
+									img(src="/public/imagenes/img/inkedin-icon.png" width="50px")
+	script(type='text/javascript', src='/public/js/jquery.min.v1.js')
+	script(type='text/javascript', src='/public/js/bootstrap.js')
+	script(type='text/javascript', src='/public/js/cambio.js')

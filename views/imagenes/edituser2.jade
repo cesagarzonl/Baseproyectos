@@ -1,0 +1,38 @@
+extends ./layout2.jade
+block contenido
+
+					form(action="/app/delet/user/#{user._id}?_method=PUT", method="POST"  name="fors" id="fors" class="fors" style="width: 90%; padding-left: 5%;")
+								div(style="margin: 10px 10px 10px 38%; width: 100%; ")
+									div(class="form-group" style="margin: 10px 10px 10px 10px;")
+										label(for="emailup" style="margin: 10px 10px 10px 10px;" ) Email 
+										input(type="email", name="emailup", placeholder="Email", id="emailup", class"form-control" title="pon el correo" required value="#{user.email}" style="margin: 10px 10px 10px 10px;") 
+									div 
+										label(for="usernameup" style="margin: 10px 10px 10px 10px;") Nombre Completo
+										input(type="text", name="usernameup",placeholder="Dime tu nombre de usuario", id="usernameup" class"form-control"  required value="#{user.username}"  style="margin: 10px 10px 10px 10px;")
+									div 
+										label(for="telefonoup"  style="margin: 10px 10px 10px 10px;") telefono
+										input(type="text", name="telefonoup",placeholder="Dime tu Telefono", id="telefonoup" class"form-control"  required value="#{user.telefono}"  style="margin: 10px 10px 10px 10px;")
+									div 
+										label(for="nitup"  style="margin: 10px 10px 10px 10px;") Cedula o NIT
+										input(type="text", name="nitup",placeholder="Dime tu nit o tu cc", id="nitup" class"form-control",  required, onchange="val()" value="#{user.nit}"  style="margin: 10px 10px 10px 10px;")
+									div(style="display:none;") 
+										label(for="subirinfo")
+										input(type="text", name="subirinfo",id="subirinfo" value="true")
+								div
+										input(type="submit" value="Actualizar" class="btn btn-info" id="send" clas="send")
+					div(id="sibus" class="sibus")
+					div(id="nobus" class="nobus")
+					.overlay-container
+						.window-container.zoomout
+						.window-container.zoomin
+					.overlay-container2
+
+	script(src='/../public/js/jquery-2.js')
+	script(src='/../public/js/demo1.js')
+	script(src='/../public/js/croppie.js')
+	script(src='/../public/js/cargaimg.js')
+	script(src='/../public/js/cambio.js')
+	script(type='text/javascript', src='../../public/js/bootstrap.js')
+	script Demo.init()
+	script Demo1.init1()
+	script sacamas.init()

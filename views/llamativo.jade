@@ -1,0 +1,58 @@
+doctype html
+html(lang="es")
+	head
+		meta(charset="utf-8")
+		meta(name="description" content="")
+		meta(name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+		title Pagina 
+		link(rel="stylesheet" type="text/css" href="/public/css/bootstrap.css")
+		link(rel="stylesheet" type="text/css" href="/public/css/elbusca.css")
+		link(rel="shortcut icon" href="public/imagenes/img/logos-01.png")
+		link( href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet")
+	body.landing( style="overflow-x:hidden; overflow-y:scroll;")
+		header
+					div(class="colorarriba" align='center')
+						.picture(style="")
+								a(href='/' style="background-color:#fff;")
+									img(src='/public/imagenes/img/logos-01.png' class="logop" id="logop" name="logop")
+									P(style=" font-family: 'Lobster', cursive; color:#000;") ONLY PET
+								ul.nav.navbar-nav.navbar-right(style="padding-left: 50%")
+													li.dropdown
+														input.button(value='Contacto' data-type="zoomout" readonly="readonly")
+													li.dropdown
+														input.buttons(value='Ingresar', data-type='zoomin' readonly="readonly")
+													li.dropdown
+														form(style='text-align: left;', action='/extencion', method='POST', label='')
+															input(placeholder="Ubicación" type="search" id="mysearch1" name="mysearch" autocomplete="off" list="datos2")
+															datalist(id="datos2" class="datos2")
+															span.glyphicon(style='')
+																input.imputt(value='Buscar', type='submit')
+					section#banner
+						h2 Informacion Informacion
+						h2 Informacion Informacion
+						p Informacion Informacion 
+						section(style="display:none;")
+									div(id="nobus" class="nobus active2")
+									div(id="sibus" class="sibus")
+				div
+					.overlay-container
+					.overlay-containers
+					.overlay-container2
+
+			footer
+						div
+							h2 CInformacion footer
+							h2 CInformacion footer
+						div
+							p CInformacion footer
+							p CInformacion footerm
+						div(style="padding-left: 5%;")
+							div(id="face" class="face" name="face")
+								a(href="#")
+									img(src="/public/imagenes/img/face.png" width="50px")
+							div(id="face" class="face" name="face")
+								a(href="#")
+									img(src="/public/imagenes/img/inkedin-icon.png" width="50px")
+	script(type='text/javascript', src='/public/js/jquery.min.v1.js')
+	script(type='text/javascript', src='/public/js/bootstrap.js')
+	script(type='text/javascript', src='/public/js/cambio.js')

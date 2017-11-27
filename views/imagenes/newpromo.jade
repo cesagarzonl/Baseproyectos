@@ -1,0 +1,178 @@
+Doctype html
+html(lang="es")
+	head  
+		meta(charset="utf-8")
+		meta(name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+		meta(name="" description="")
+		title cosas para animalitos 
+		link(rel="stylesheet" type="text/css" href="/../public/css/bootstrap.css")
+		link(rel="stylesheet" type="text/css" href="/../../public/css/croppie.css")
+		link(rel="stylesheet" type="text/css" href="/../../public/css/elbusca.css")
+		link(rel="shortcut icon" href="/../public/imagenes/img/antede.png")
+	body( style="overflow-x:hidden; overflow-y:scroll;")
+		header
+					div(class="colorarriba" align='center')
+						.picture()
+								a(href='/' )
+									img(class="logop" id="logop" name="logop" src='/public/imagenes/img/logos-01.png')
+								ul.nav.navbar-nav.navbar-right(style="padding-left: 30%")
+									li
+										input.button(value='Contacto' data-type="zoomout")
+									li
+										input.button(value='Ingresar', data-type='zoomin' style="display:none;")
+									li.dropdown
+										a.buttonss(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') #{user.username}
+											span.caret
+										ul.dropdown-menu
+											li
+												a(href="/iniciado/#{user.username}/#{user.id}") Mis oficinas
+											li
+												a(href="/app/imagenes/newpromo") Agregar Oficinas
+											li
+												a(href="/app/imagenes") Eliminar Oficinas
+											li 
+												a(href="/app/delett/editt/#{user.id}") Modificar Usuario
+											li 
+												a(href="/app/deslogear") Cerrar sesion
+	.divicion 
+	.divicion
+		.Contenedor(style="padding: 3%;")
+			div
+				p(style="margin:20px; font-size: 20px;") ¡Hola 
+					font(color="#ffda00" style="font-weight: bold;") #{user.username} 
+					|, vamos a publicar tu espacio de trabajo!
+				form(action="/app/imagenes" method="POST" enctype="multipart/form-data" )
+					div(id="formm" name="formm")
+						div(style="width: 100%; margin: 30px; display: flex;")
+							div
+								input(type="text", name="imgs22", placeholder="Titulo de la imagen ", id="imgs22", class"form-control" value="1" style="display:none;")
+							div.fotografias#Fotografias
+								div(style="width: 100%; ")
+											h2 Sube Foto de perfil
+								div(style="width: 50%;")
+									input#upload.upload(  value='', accept='image/*', type='file'  required onchange="cargaaa()" style="display:none;" )
+									label(for="upload")
+										img(id="imgs" name="imgs" src="/public/imagenes/img/icon/icon.png" style=" max-width: 195px ; height: 169px;" )
+						div
+							h2 Servicios
+						.risponsive
+							div(id="especificos" name="especificos")
+								div
+									label(for="radio1") Corte
+									input(class ="radiobu" type="checkbox", name="radio1", id="radio1", class"form-control") 
+								div
+									label(for="radio6") Uñas 
+									input(type="checkbox", name="radio6", id="radio6", class"form-control") 
+								div
+									label(for="radio2") Peinado
+									input(type="checkbox", name="radio2", id="radio2", class"form-control") 
+								div
+									label(for="radio3") Guarderia/Jardin
+									input(type="checkbox", name="radio3", id="radio3", class"form-control") 
+								div
+									label(for="radio4") Paseos
+									input(type="checkbox", name="radio4", id="radio4", class"form-control") 									
+								div
+									label(for="radio8") Teléfono
+									input(type="checkbox", name="radio8", id="radio8", class"form-control") 
+								div
+									label(for="radio9") Domicilios
+									input(type="checkbox", name="radio9", id="radio9", class"form-control") 
+								div
+									label(for="radio10") Adopcion
+									input(type="checkbox", name="radio10", id="radio10", class"form-control") 
+								div
+									label(for="radio5") xxxxxx
+									input(type="number", name="radio5", id="radio5"  max="99" min="1")
+						.risponsive
+								textarea(type="text", rows="1" cols="1" name="dlugar", placeholder="Descripción del lugar", id="dlugar", class"form-control" value=""  required style =" max-width: 100%; min-width: 100%; max-height: 100px;")
+						div
+							h2 Productos
+						div(style="width: 100%; margin: 30px; display: flex;")
+							div.fotografias#Fotografias(style="width: 50%;")
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio11", id="radio11", class"form-control") 
+									label(for="radio11")  Cocina
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio12", id="radio12", class"form-control") 
+									label(for="radio12")  Recepción
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio13", id="radio13", class"form-control") 
+									label(for="radio13")  Sala de juntas
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio14", id="radio14", class"form-control") 
+									label(for="radio14")  Impresora
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio15", id="radio15", class"form-control") 
+									label(for="radio15")  Parqueadero
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio17", id="radio17", class"form-control") 
+									label(for="radio17")  Espacios compartidos
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio18", id="radio18", class"form-control") 
+									label(for="radio18")  Discapacitados
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio19", id="radio19", class"form-control") 
+									label(for="radio19")  Bicicletero
+							div.fotografias#Fotografias(style="width: 50%;")
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio27", id="radio27", class"form-control") 
+									label(for="radio27")  Catering
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio20", id="radio20", class"form-control") 
+									label(for="radio20")  Café
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio21", id="radio21", class"form-control") 
+									label(for="radio21")  Agua
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio22", id="radio22", class"form-control") 
+									label(for="radio22")  Servicio Correo
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio23", id="radio23", class"form-control") 
+									label(for="radio23")  Restaurante
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio24", id="radio24", class"form-control") 
+									label(for="radio24")  Pet friendly
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio25", id="radio25", class"form-control") 
+									label(for="radio25")  Proyector
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio26", id="radio26", class"form-control") 
+									label(for="radio26")  Bodega / Almacenamiento
+								div(style="margin: 7px; width: 80%;")
+									input(type="text", name="radio16", id="radio16", class"form-control" autocomplete="off") 
+									label(for="radio16")  Horario de la oficina
+						div
+									a(href="/index/bogota" type="button" id="busssss" class="busssss") Cancelar
+									input(type="button" value="Publicar oficina" class="send3" style="width: auto; " name="subirimg" id="subirimg" )
+						div.envok(id="envok" )
+				div(id="nobus" class="nobus")
+				div(id="sibus" class="sibus")
+				div
+					.overlay-container
+					.overlay-containers
+					.overlay-container2
+			div( id="atracito" name="atracito" )
+				section(id="sectionnn" name="sectionnn" class="sectionnn" style="display:none; ")
+						.demo-wrap.upload-demo(style="widtt:700px;")
+							.container
+								.grid(style="position: absolute; top: 2em; left: 15%; width: 70%;")
+									.col-1-2
+										.upload-demo-wrap
+													#upload-demo.croppie-container
+												button.upload-result#upload-result( onclick="preload()") Recortar imagen
+												button.upload-result1#upload-result1( onclick="preload()") Recortar imagen
+												button.upload-result2#upload-result2( onclick="preload()") Recortar imagen
+												button.upload-result3#upload-result3( onclick="preload()") Recortar imagen
+												button.upload-result4#upload-result4( onclick="preload()") Recortar imagen
+												button(class="close" onclick="nocargaaa()") Cancelar
+
+	script(src='/../public/js/jquery-2.js')
+	script(src='/../public/js/demo1.js')
+	script(src='/../public/js/croppie.js')
+	script(src='/../public/js/cargaimg.js')
+	script(src='/../public/js/cambio.js')
+	script(type='text/javascript', src='../../public/js/bootstrap.js')
+	script Demo.init()
+	script Demo1.init1()
+	script sacamas.init()

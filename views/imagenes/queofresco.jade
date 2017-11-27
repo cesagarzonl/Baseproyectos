@@ -1,0 +1,408 @@
+doctype html 
+html(lang="es")
+	head  
+		meta(charset="utf-8")
+		meta(name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
+		meta(name="" description="")
+		title cosas para animalitos 
+		link(rel="stylesheet" type="text/css" href="/../public/css/bootstrap.css")
+		link(rel="stylesheet" type="text/css" href="/../../public/css/croppie.css")
+		link(rel="stylesheet" type="text/css" href="/../../public/css/elbusca.css")
+		link(rel="shortcut icon" href="/../public/imagenes/img/antede.png")
+	body( style="overflow-x:hidden; overflow-y:scroll;")
+		header
+					div(class="colorarriba" align='center')
+						.picture()
+								a(href='/' )
+									img(class="logop" id="logop" name="logop" src='/public/imagenes/img/logos-01.png')
+								ul.nav.navbar-nav.navbar-right(style="padding-left: 30%")
+									li
+										input.button(value='Contacto' data-type="zoomout")
+									li
+										input.button(value='Ingresar', data-type='zoomin' style="display:none;")
+									li.dropdown
+										a.buttonss(data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') #{user.username}
+											span.caret
+										ul.dropdown-menu
+											li
+												a(href="/iniciado/#{user.username}/#{user.id}") Mis oficinas
+											li
+												a(href="/app/imagenes/newpromo") Agregar Oficinas
+											li
+												a(href="/app/imagenes") Eliminar Oficinas
+											li 
+												a(href="/app/delett/editt/#{user.id}") Modificar Usuario
+											li 
+												a(href="/app/deslogear") Cerrar sesion
+	.divicion 
+		.divicion
+		.Contenedor(style="padding: 3%;")
+			div
+				p(style="margin:20px; font-size: 20px;") ¡Hola 
+					font(color="#000" style="font-weight: bold;") #{user.username} 
+					|, Selecciona lo que vendes en tu tienda!
+				form(action="/app/delet/edit/#{user._id}?_method=PUT" method="POST" enctype="multipart/form-data" )
+					div(id="formm" name="formm")
+						div(style="width: 100%; margin: 30px; display: flex;")
+							div
+								input(type="text", name="imgs22", placeholder="Titulo de la imagen ", id="imgs22", class"form-control" value="1" style="display:none;")
+							div.fotografias#Fotografias
+								div(style="width: 100%; ")
+											h2 Sube Foto de perfil
+								div(style="width: 50%;")
+									input#upload.upload(  value='', accept='image/*', type='file'   onchange="cargaaa()" style="display:none;" )
+									label(for="upload")
+										img(id="imgs" name="imgs" src="/public/imagenes/img/SHOP.png" style=" max-width: 195px ; height: 169px;" )
+									.risponsive(style="padding-left: 70%;")
+										div(style="width: 50%; ")
+											h2(style="text-align: right;") A que animales va enfocado
+										div(id="especificos" name="especificos")
+											div
+													label(for="radio32")
+														img(src="/public/imagenes/img/DOG.png")
+													| Perros
+													input(class ="radiobu" type="checkbox", name="radio32", id="radio32", class"form-control") 
+												if  user.radio32 == "on"
+													script(type='text/javascript').
+														document.getElementById('radio32').checked = 1;
+												else
+													script(type='text/javascript').
+														document.getElementById('radio32').checked = 0;
+											div
+													label(for="radio28")
+														img(src="/public/imagenes/img/CAT.png")
+													| Gatos
+													input(class ="radiobu" type="checkbox", name="radio28", id="radio28", class"form-control") 
+												if  user.radio28 == "on"
+													script(type='text/javascript').
+														document.getElementById('radio28').checked = 1;
+												else 
+													script(type='text/javascript').
+														document.getElementById('radio28').checked = 0;
+
+											div
+												label(for="radio29")
+													img(src="/public/imagenes/img/HAMSTER.png")
+												| Hámsters
+												input(class ="radiobu" type="checkbox", name="radio29", id="radio29", class"form-control") 
+												if  user.radio29 == "on"
+													script(type='text/javascript').
+														document.getElementById('radio29').checked = 1;
+												else 
+													script(type='text/javascript').
+														document.getElementById('radio29').checked = 0;
+											div
+												label(for="radio30")
+													img(src="/public/imagenes/img/BIRD.png")
+												| Pajaros
+												input(class ="radiobu" type="checkbox", name="radio30", id="radio30", class"form-control") 
+												if  user.radio30 == "on"
+													script(type='text/javascript').
+														document.getElementById('radio30').checked = 1;
+												else 
+													script(type='text/javascript').
+														document.getElementById('radio30').checked = 0;
+											div
+												label(for="radio31")
+													img(src="/public/imagenes/img/PES.png")
+												| Peces
+												input(class ="radiobu" type="checkbox", name="radio31", id="radio31", class"form-control") 
+												if  user.radio31 == "on"
+													script(type='text/javascript').
+														document.getElementById('radio31').checked = 1;
+												else 
+													script(type='text/javascript').
+														document.getElementById('radio31').checked = 0;
+						div
+							h2 Servicios
+						.risponsive
+							div(id="especificos" name="especificos")
+								div
+									label(for="radio1") xxxxx 
+									input(class ="radiobu" type="checkbox", name="radio1", id="radio1", class"form-control") 
+									if  user.radio1 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio1').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio1').checked = 0;
+								div
+									label(for="radio6") xxxxxxx 
+									input(type="checkbox", name="radio6", id="radio6", class"form-control") 
+									if  user.radio6 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio6').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio6').checked = 0;
+								div
+									label(for="radio2") Peluqueria
+									input(type="checkbox", name="radio2", id="radio2", class"form-control") 
+									if  user.radio2 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio2').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio2').checked = 0;
+								div
+									label(for="radio3") Guarderia/Jardin
+									input(type="checkbox", name="radio3", id="radio3", class"form-control") 
+									if  user.radio3 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio3').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio3').checked = 0;
+								div
+									label(for="radio4") Paseos
+									input(type="checkbox", name="radio4", id="radio4", class"form-control")
+									if  user.radio4 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio4').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio4').checked = 0;
+								div
+									label(for="radio8") xxxxxx
+									input(type="checkbox", name="radio8", id="radio8", class"form-control") 
+									if  user.radio8 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio8').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio8').checked = 0;
+								div
+									label(for="radio9") Domicilios
+									input(type="checkbox", name="radio9", id="radio9", class"form-control") 
+									if  user.radio9 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio9').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio9').checked = 0;
+								div
+									label(for="radio10") Adopcion
+									input(type="checkbox", name="radio10", id="radio10", class"form-control") 
+									if  user.radio10 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio10').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio10').checked = 0;
+								div
+									label(for="radio5") Veterinario
+									input(type="checkbox", name="radio5", id="radio5"  max="99" min="1")
+									if  user.radio5 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio5').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio5').checked = 0;	
+						.risponsive
+								if  user.dlugar != ''
+									textarea(type="text", rows="1" cols="1" name="dlugar", placeholder="Descripción del lugar", id="dlugar", class"form-control" value="#{user.dlugar}"   style =" max-width: 100%; min-width: 100%; max-height: 100px;") #{user.dlugar}
+								else
+									textarea(type="text", rows="1" cols="1" name="dlugar", placeholder="Descripción del lugar", id="dlugar", class"form-control" value=""   style =" max-width: 100%; min-width: 100%; max-height: 100px;")
+							div(style="margin: 7px; width: 40%;")
+								if  user.dlugar != ''
+									input(type="text", name="lat", id="lat", class"form-control" autocomplete="off" value="#{user.lat}") 
+									label(for="lat")  lat
+								else
+									input(type="text", name="lat", id="lat", class"form-control" autocomplete="off") 
+									label(for="lat")  lat
+							div(style="margin: 7px; width: 40%;")
+								if  user.dlugar != ''
+									input(type="text", name="long", id="long", class"form-control" autocomplete="off" value="#{user.long}") 
+									label(for="long")  long
+								else
+									input(type="text", name="long", id="long", class"form-control" autocomplete="off") 
+									label(for="long")  long
+						div
+							h2 Productos
+						div(style="width: 100%; margin: 30px; display: flex;")
+							div.fotografias#Fotografias(style="width: 50%;")
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio11", id="radio11", class"form-control") 
+									label(for="radio11")  Casas
+									if  user.radio11 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio11').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio11').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio12", id="radio12", class"form-control") 
+									label(for="radio12")  Juguetes
+									if  user.radio12 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio12').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio12').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio13", id="radio13", class"form-control") 
+									label(for="radio13") collares
+									if  user.radio13 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio13').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio13').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio14", id="radio14", class"form-control") 
+									label(for="radio14")  bozales
+									if  user.radio13 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio14').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio14').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio15", id="radio15", class"form-control") 
+									label(for="radio15")  ropa
+									if  user.radio15 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio15').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio15').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio17", id="radio17", class"form-control") 
+									label(for="radio17")  disfraces
+									if  user.radio17 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio17').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio17').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio18", id="radio18", class"form-control") 
+									label(for="radio18")  zapatos/medias
+									if  user.radio18 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio18').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio18').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio19", id="radio19", class"form-control") 
+									label(for="radio19")  maletas de viaje
+									if  user.radio19 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio19').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio19').checked = 0;
+							div.fotografias#Fotografias(style="width: 50%;")
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio27", id="radio27", class"form-control") 
+									label(for="radio27")  castillos/gimacios
+									if  user.radio19 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio27').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio27').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio20", id="radio20", class"form-control") 
+									label(for="radio20")  camas
+									if  user.radio20 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio20').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio20').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio21", id="radio21", class"form-control") 
+									label(for="radio21")  correas
+									if  user.radio21 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio21').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio21').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio22", id="radio22", class"form-control") 
+									label(for="radio22")  cepillos de dientes
+									if  user.radio22 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio22').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio22').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio23", id="radio23", class"form-control") 
+									label(for="radio23")  Alimentos
+									if  user.radio23 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio23').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio23').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio24", id="radio24", class"form-control") 
+									label(for="radio24")  Pet friendly
+									if  user.radio24 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio24').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio24').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio25", id="radio25", class"form-control") 
+									label(for="radio25")  Paseadores
+									if  user.radio25 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio25').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio25').checked = 0;
+								div(style="margin: 7px;")
+									input(type="checkbox", name="radio26", id="radio26", class"form-control") 
+									label(for="radio26")  xxxxxxxx
+									if  user.radio26 == "on"
+										script(type='text/javascript').
+											document.getElementById('radio26').checked = 1;
+									else 
+										script(type='text/javascript').
+											document.getElementById('radio26').checked = 0;
+								div(style="margin: 7px; width: 80%;")
+									if  user.radio16 != ""
+										input(type="text", name="radio16", id="radio16", class"form-control" autocomplete="off" value="#{user.radio16}") 
+										label(for="radio16")  Horario de atencion
+									else 
+										input(type="text", name="radio16", id="radio16", class"form-control" autocomplete="off" ) 
+										label(for="radio16")  Horario de atencion
+						div
+									a(href="/index/bogota" type="button" id="busssss" class="busssss") Cancelar
+									input(type="button" value="Publicar oficina" class="send3" style="width: auto; " name="subirimg" id="subirimg" )
+						div.envok(id="envok" )
+				div(id="nobus" class="nobus")
+				div(id="sibus" class="sibus")
+				div
+					.overlay-container
+					.overlay-containers
+					.overlay-container2
+			div( id="atracito" name="atracito" )
+				section(id="sectionnn" name="sectionnn" class="sectionnn" style="display:none; ")
+						.demo-wrap.upload-demo(style="widtt:700px;")
+							.container
+								.grid(style="position: absolute; top: 2em; left: 15%; width: 70%;")
+									.col-1-2
+										.upload-demo-wrap
+													#upload-demo.croppie-container
+												button.upload-result#upload-result( onclick="preload()") Recortar imagen
+												button.upload-result1#upload-result1( onclick="preload()") Recortar imagen
+												button.upload-result2#upload-result2( onclick="preload()") Recortar imagen
+												button.upload-result3#upload-result3( onclick="preload()") Recortar imagen
+												button.upload-result4#upload-result4( onclick="preload()") Recortar imagen
+												button(class="close" onclick="nocargaaa()") Cancelar
+	script(src='/../public/js/jquery-2.js')
+	script(src='/../public/js/demo1.js')
+	script(src='/../public/js/croppie.js')
+	script(src='/../public/js/cargaimg.js')
+	script(src='/../public/js/cambio.js')
+	script(type='text/javascript', src='../../public/js/bootstrap.js')
+	script Demo.init()
+	script Demo1.init1()
+	script sacamas.init()

@@ -1,0 +1,200 @@
+extends ./imagenes/layout2.jade
+block contenido 
+		.coreccion
+				.arriba
+					.divicion(style="text-align: center;" )
+						.containers
+							div(class="ubicacion2")
+								img(src="#{user.imgs22}")
+					.divicion(style="text-align: center;" )
+							h2 Tus Datos
+							p Hola #{user.username} estos son los datos que tienes registrados 
+							p Telefono: #{user.telefono} 
+							p Email: #{user.email}
+							p  nit : #{user.nit}
+					.divicion(style="text-align: center;" )
+								.risponsive
+									div
+										h2 Va dirigido a:
+									div(id="especificos" name="especificos")
+											if  user.radio32 == "on"
+												div
+													label(for="radio32")
+														img(src="/public/imagenes/img/DOG.png")
+													| Perros
+											if  user.radio28 == "on"
+												div
+													label(for="radio28")
+														img(src="/public/imagenes/img/CAT.png")
+													| Gatos
+											if  user.radio29 == "on"
+												div
+													label(for="radio29")
+														img(src="/public/imagenes/img/HAMSTER.png")
+													| Hámsters
+											if  user.radio30 == "on"
+												div
+													label(for="radio30")
+														img(src="/public/imagenes/img/BIRD.png")
+													| Pajaros
+											if  user.radio31 == "on"	
+												div
+													label(for="radio31")
+														img(src="/public/imagenes/img/PES.png")
+													| Peces
+									div
+										h2 Servicios especificos
+									div(id="especificos" name="especificos")
+										if  user.radio1 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-13.png")
+													p Corte
+										if  user.radio1 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-12.png")
+													p Uñas
+										if  user.radio8 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-11.png")
+													p Telefono
+										if  user.radio2 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-10.png")
+													p Peinado
+										if  user.radio9 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-06.png")
+													p Domicilios
+										if  user.radio3 == "on" 	
+												div
+													img(src="/public/imagenes/img/icon/Iconos-09.png")
+													p Guarderia/Jardin
+										if  user.radio4 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-08.png")
+													p Paseos
+										if  user.radio7 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-15.png")
+													p Interior
+										if  user.radio10 == "on" 
+												div
+													img(src="/public/imagenes/img/icon/Iconos-07.png")
+													p Adopcion
+									div(id="dlugar" name="dlugar")
+										p=user.dlugar
+									div(id="generales2" name="generales2")
+										div(id="generales" name="generales")
+											h2 Servicios generales
+											if  user.radio11 == "on" 
+												p - Casas
+											if  user.radio12 == "on" 
+												p - Juguetes
+											if  user.radio13 == "on" 
+												p - collares
+											if  user.radio14 == "on" 
+												p - bozales
+											if  user.radio15 == "on" 
+												p - ropa
+											if  user.radio16 != "" 
+												div(id="radio16" name="radio16")
+													p=user.radio16
+											if  user.radio17 == "on" 
+												p - disfraces
+											if  user.radio18 == "on" 
+												p - zapatos/medias
+										div(id="generales" name="generales")
+											if  user.radio19 == "on" 
+												p - maletas de viaje
+											if  user.radio27 == "on" 
+												p - castillos/gimacios
+											if  user.radio20 == "on" 
+												p - camas 
+											if  user.radio21 == "on" 
+												p - correas
+											if  user.radio22 == "on" 
+												p - cepillos de dientes
+											if  user.radio23 == "on" 
+												p - Alimentos
+											if  user.radio24 == "on" 
+												p - Pet friendly
+											if  user.radio25 == "on" 
+												p - Paseadores
+											if  user.radio26 == "on" 
+												p - xxxxxxxx
+		.containers(style="text-align: center;" )
+					h2 Ubicacion
+					p#lat(style="display:none;")=user.lat
+					p#long(style="display:none;")=user.long
+				for imagen in imagenes
+					if filtro == imagen.creator._id
+									div(class="ubicacion2")
+										if imagen.extension != "noesta"
+												img(src="/public/imagenes/#{imagen._id}.#{imagen.extension}")
+											div
+												a(href="/app/imagenes/#{imagen._id}/edit") Editar
+												a(href="/detalle/#{imagen._id}" class="ordenado")
+													p ver oficina
+				h3 My Google Maps Demo
+				#map.map(style=" height: 400px; width: 100%; ")
+				script.
+					function initMap() {
+					var lat = $('#lat').text();
+					var long = $('#long').text();
+					var lat2 =  parseFloat(lat);
+					var long2 =  parseFloat(long);
+					console.log(lat2,long2)
+					var uluru = {lat:lat2, lng:long2};
+					var map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 18,
+					center: uluru
+					});
+					var marker = new google.maps.Marker({
+					position: uluru,
+					map: map
+					});
+					}
+				div(id="nobus" class="nobus")
+				div(id="sibus" class="sibus")
+				div
+					.overlay-container
+					.overlay-containers
+					.overlay-container2
+		script(type='text/javascript', src='/public/js/jquery.min.v1.js')
+			script(type='text/javascript', src='/public/js/bootstrap.min.js')
+			script(src='/public/slick/slick.min.js', type='text/javascript', charset='utf-8')
+			script(src='/../public/js/cambio.js')
+			script(type='text/javascript').
+				$(document).on('ready', function() {
+				$('.one-time').slick({
+				dots: true,
+				infinite: true,
+				speed: 900,
+				slidesToShow: 1,
+				adaptiveHeight: true,
+				fade:true,
+				autoplay: true,
+				autoplaySpeed: 9900,
+				});
+				$('.slider-for').slick({
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows: false,
+				fade: true,
+				asNavFor: '.slider-nav',
+				centerMode: true, focusOnSelect: true,autoplay: true, autoplaySpeed: 45000, });
+				$('.slider-nav').slick({
+				slidesToShow: 4,slidesToScroll: 1,
+				asNavFor: '.slider-for',centerMode: false,
+				focusOnSelect: true
+				});
+				$('.single-item').slick();
+				});
+
+			script(type='text/javascript').
+				twttr.widgets.createTimeline({
+				sourceType: "profile",
+				screenName: "fabric"
+				}, document.getElementById("container"))		
+			script(async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD6MLbG3dhbYW9UcsTiGueXxODDQFaZUiQ&callback=initMap')
+script(async='', src='//platform.twitter.com/widgets.js', charset='utf-8')
