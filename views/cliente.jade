@@ -160,6 +160,26 @@ block contenido
 					.overlay-container
 					.overlay-containers
 					.overlay-container2
+				if user2 != null
+					div
+													form(action='/app/envio2', method='POST' )
+															.roww
+																input(type='text' name='name' placeholder='Nombre' value="#{user2.username}" style="display:none;")
+															.roww
+																input(type='text' name='email' placeholder='email' value="#{user2.email}" style="display:none;")
+															.roww
+																input(type='text' name='email2' placeholder='email2' value="#{user.email}" style="display:nones;")
+															.roww
+																input(type='text' name='celular' placeholder='celular' value="#{user2.telefono}" style="display:none;")
+
+															.roww
+																input(type='text', name='direccion', placeholder='direccion' value="" )
+															.roww
+																textarea( name='mensaje',placeholder='Mensaje'  value="http://localhost:5002/detalle/#{filtro}" style="display:;")
+																input(type='hidden', name='adwords', value='2' style="display:;")
+															input#sendMessage.envia.agendarvisi(type='button', value='Contacta a la tienda' style="background-color: #ffda00; color: #999; padding: 3px; float: initial; margin: 10px 10px 10px 38%; height: auto; width: auto; font-size: 30px; box-decoration-break: none; box-shadow: none; border-style: none;")
+				else
+					input.buttons(value='Crea tu cuenta Geatis', data-type='zoomin' readonly="readonly")
 		script(type='text/javascript', src='/public/js/jquery.min.v1.js')
 			script(type='text/javascript', src='/public/js/bootstrap.min.js')
 			script(src='/public/slick/slick.min.js', type='text/javascript', charset='utf-8')

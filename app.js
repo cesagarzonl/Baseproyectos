@@ -30,6 +30,23 @@ var passport = require('passport');
 //var Cropper = require('cropperjs')
 require('./passport')(passport);
 
+/*var Twitter = require('twitter');
+
+var clientrrr = new Twitter({
+  consumer_key: 'kdxALOO3LM4d4AVNw3VvDDTYZ',
+  consumer_secret: 'BUP7mxS9hGbeDOVvlj1ADAIYZtEf0xYwWzY3hjMuVnA1oHeCvn',
+  access_token_key: 'BRos9T0CP9hiwBpD0hAs3l6DdrgL1YpesfxqCBuA',
+  access_token_secret: 'jJNmW1ZzaZC37BvB5uYz2Go0MyLzfuuepr1kvsU0aFaAf'
+});
+
+
+app.get('/favorites/list', function(error, tweets, response, clientrrr, res, req) {
+  if(error) throw error;
+  console.log(tweets);  // The favorites. 
+  console.log(response);  // Raw response object. 
+	res.render("llamativo");
+});*/
+
 
 var server = http.Server(app);
 var sessionMiddleware = session({
@@ -55,18 +72,7 @@ app.use(sessionMiddleware);
 app.use(formidable.parse({ keepExtensions: true, maxFieldsSize : 50 * 1024 * 1024 }));
 app.set("view engine","jade");
 app.all("/index",imagen_find);
-app.get("/area/*", function(req,res){
-	var query = url.parse(req.url).pathname;
-	query = query.split("/").pop()
-	var filtro = query
-	Imagen.find({})
-			.populate("creator")
-			.exec(function(err,imagenes){
-				if(err) {console.log(err);
-				}else{
-				res.render("duitama",{imagenes:imagenes,filtro:filtro});}
-			})
-});
+
 app.get("/", function(req,res,next){
 User.find(function(err,users){
 	Imagen.find({})
@@ -88,17 +94,18 @@ app.get("/perfil/:username/:id", function(req,res,next){
 	var query = url.parse(req.url).pathname;
 		query = query.split("/").pop()
 	var filtro = query
-	
-	console.log(filtro)
 	Imagen.find(User)
 		.populate("creator")
 		.exec(function(err,imagenes){
 			if(err) {console.log(err);
 			}else{
 				User.findById(filtro,function(err,user){
-					Video.find(function(err,videos){	
+					Video.find(function(err,videos){
+						var fff = req.session.user_id
+										User.findById(fff,function(err,user2){
 						res.locals = { user:user };
-						res.render("cliente",{imagenes:imagenes,filtro: filtro,videos: videos});}
+						res.render("cliente",{imagenes:imagenes,filtro: filtro,videos: videos,user2:user2});}
+						)}
 					)}
 				)
 			}

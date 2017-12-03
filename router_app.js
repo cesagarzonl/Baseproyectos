@@ -326,27 +326,21 @@ router.post("/envio2",function(req,res){
 //queri
 
 	User.findOne({},(function(err,user){
-		console.log(req.body.name +"nombree")
 		var data = {
 			nombre: req.body.name,
+			email2: req.body.email2,
 			email: req.body.email,
-			ciudad: req.body.ciudad,
-			tel: req.body.telefono,
+			direccion: req.body.direccion,
+			tel: req.body.celular,
 			mensaje: req.body.mensaje,
-			email2: req.body.email2
 		}
-		var data2 = {
-			nombre: res.locals.user,
-		}
-		console.log(data)
-		console.log(data2)
 		var transporter = nodemailer.createTransport('smtps://antesde.com%40gmail.com:elbarbas01@smtp.gmail.com');
 		var mailOptions = {
-	    from: '"workeybogota.com 👥" <cigarzon8@gmail.com>', // sender address
+	    from: '"Onlipets.com 👥" <cigarzon8@gmail.com>'+'<'+data.email+'>', // sender address
 	    to:"cigarzon8@misena.edu.co", //req.body.correocliente, //, // list of receivers
 	    subject: 'Pedido ✔', // Subject line
 	    text: 'Tiene in pedido nuevo 🐴', // plaintext body
-	    html: '<b>Hola Worki </b>'+ res.locals.user.username +
+	    html: '<b>Hola Onlipent </b>'+ res.locals.user.username +
 	    "<p>El usuario  " + res.locals.user.username +"<p> esta interesado en la oficina " +data.mensaje+"<p>, Comunicate con el " +
 	    "<p>Datos del usuario: </p>"+ "<p>Nombre "+ res.locals.user.username +"<p> telefono  "+res.locals.user.telefono+
 	    "<p> Correo " + res.locals.user.email + "<p></p>"+"<b>Datos de la oficina</b>"+"<p> Localidad  " + data.ciudad
